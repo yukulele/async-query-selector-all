@@ -1,5 +1,5 @@
 import { expectType } from 'tsd'
-import AsyncIterableBuilder from '../src/async-iterable-builder.ts'
+import AsyncIterableBuilder from '../src/AsyncIterableBuilder.ts'
 const { next, iterable } = new AsyncIterableBuilder<Number>()
 expectType<AsyncIterable<Number>>(iterable)
 expectType<(value: number, done?: boolean) => void>(next)

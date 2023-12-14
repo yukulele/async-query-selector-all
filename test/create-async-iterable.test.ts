@@ -1,6 +1,6 @@
 import { test, expect } from 'bun:test'
 import sleep from './sleep.js'
-import AsyncIterableBuilder from '../src/async-iterable-builder.js'
+import AsyncIterableBuilder from '../src/AsyncIterableBuilder.js'
 test('createAsyncIterable', async () => {
   const { iterable, next } = new AsyncIterableBuilder<Number>()
   next(1)
