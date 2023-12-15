@@ -14,8 +14,7 @@
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "allowJs": true,
-    "rootDir": "./src/",
-    "outDir": "./dist/"
+    "types": ["./references.d.ts"]
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*", "./test/**/*"]
 }

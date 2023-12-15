@@ -1,6 +1,3 @@
-/// <reference lib="DOM" />
-/// <reference types="bun-types" />
-
 import { describe, test, expect } from 'bun:test'
 import { expectType } from 'tsd'
 import sleep from './sleep.ts'
