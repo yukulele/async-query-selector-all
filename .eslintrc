@@ -1,0 +1,71 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+
+  "extends": [
+    "eslint:recommended",
+    "plugin:eslint-comments/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:unicorn/all",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "eslint-plugin-filename-export",
+    "@typescript-eslint",
+    "only-warn"
+  ],
+  "rules": {
+    "camelcase": "error",
+    "one-var": ["error", "never"],
+    "no-var": "error",
+    "prefer-const": "error",
+    "object-shorthand": "error",
+    "spaced-comment": ["error", "always", { "markers": ["/ <reference"] }],
+    "prefer-template": "error",
+    "prefer-arrow-callback": "error",
+    "arrow-body-style": "error",
+    "eqeqeq": "error",
+    "max-depth": ["error", { "max": 2 }],
+    "max-lines-per-function": ["error", { "max": 40 }],
+    "max-lines": ["error", { "max": 300 }],
+    "no-console": [
+      "error",
+      {
+        "allow": ["info", "warn", "error"]
+      }
+    ],
+    "filename-export/match-default-export": ["error", { "casing": "strict" }],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "require-await": "error",
+    "lines-between-class-members": [
+      "error",
+      "always",
+      {
+        "exceptAfterSingleLine": true
+      }
+    ],
+    "@typescript-eslint/no-floating-promises": "off",
+    "unicorn/filename-case": "off",
+    "unicorn/no-unsafe-regex": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "semi": false,
+        "arrowParens": "avoid",
+        "singleQuote": true
+      }
+    ],
+    "eslint-comments/require-description": "error"
+  }
+}

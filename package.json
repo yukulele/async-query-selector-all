@@ -2,6 +2,7 @@
   "name": "async-query-selector",
   "scripts": {
     "test": "bun test",
+    "lint": "eslint ./src/**/*.ts ./test/**/*.ts --max-warnings 0 --fix",
     "build": "bun build ./src/async-query-selector.ts --outdir ./dist/"
   },
   "devDependencies": {
@@ -12,13 +13,19 @@
     "typescript": "^5.0.0"
   },
   "type": "module",
-  "prettier": {
-    "arrowParens": "avoid",
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "all"
-  },
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-filename-export": "^1.0.4",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.4.0",
+    "eslint-plugin-only-warn": "^1.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-unicorn": "^49.0.0",
     "tsd": "^0.29.0"
   }
 }

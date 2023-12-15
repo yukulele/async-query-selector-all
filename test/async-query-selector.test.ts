@@ -13,7 +13,7 @@ document.body.innerHTML = /* html */ `
 <ul><li></li></ul>
 <ol><li>1</li><li>2</li></ol>`
 
-describe('asyncQuerySelector', async () => {
+describe('asyncQuerySelector', () => {
   const list = document.querySelector('ul')!
   test('select an element already in document', async () => {
     const list2 = await asyncQuerySelector('ul')
@@ -65,7 +65,8 @@ describe('asyncQuerySelectorAll', () => {
   })
 
   test('select elements not yet in DOM', async () => {
-    for (let i = 0; i < 3; i++) list.append(document.createElement('li'))
+    for (let index = 0; index < 3; index++)
+      list.append(document.createElement('li'))
     await sleep()
     expect(items).toHaveLength(5)
   })

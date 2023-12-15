@@ -7,8 +7,8 @@ import {
 const asyncQuerySelector: AsyncQuerySelectorType = (
   selector: string,
   parent: ParentNode = document,
-) => {
-  return new Promise<Element>(resolve => {
+) =>
+  new Promise<Element>(resolve => {
     const element = parent.querySelector(selector)
     if (element) return resolve(element)
     const observer = new MutationObserver(() => {
@@ -23,7 +23,6 @@ const asyncQuerySelector: AsyncQuerySelectorType = (
       attributes: true,
     })
   })
-}
 
 const asyncQuerySelectorAll: AsyncQuerySelectorAllType = (
   selector: string,
@@ -32,7 +31,7 @@ const asyncQuerySelectorAll: AsyncQuerySelectorAllType = (
   const delivered = new WeakSet<Element>()
   const { next, iterable } = new AsyncIterableBuilder<Element>()
   function checkNewElement() {
-    for (let element of parent.querySelectorAll(selector)) {
+    for (const element of parent.querySelectorAll(selector)) {
       if (delivered.has(element)) continue
       delivered.add(element)
       next(element)

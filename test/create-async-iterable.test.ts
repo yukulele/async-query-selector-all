@@ -2,10 +2,10 @@ import { test, expect } from 'bun:test'
 import sleep from './sleep.ts'
 import AsyncIterableBuilder from '../src/AsyncIterableBuilder.ts'
 test('createAsyncIterable', async () => {
-  const { iterable, next } = new AsyncIterableBuilder<Number>()
+  const { iterable, next } = new AsyncIterableBuilder<number>()
   next(1)
   next(2)
-  const values: Number[] = []
+  const values: number[] = []
   let done = false
   ;(async () => {
     for await (const number of iterable) {
