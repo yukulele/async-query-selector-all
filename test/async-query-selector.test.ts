@@ -3,12 +3,12 @@
 
 import { describe, test, expect } from 'bun:test'
 import { expectType } from 'tsd'
-import sleep from './sleep.js'
+import sleep from './sleep.ts'
 import { GlobalRegistrator } from '@happy-dom/global-registrator'
 import {
   asyncQuerySelector,
   asyncQuerySelectorAll,
-} from '../src/async-query-selector.js'
+} from '../src/async-query-selector.ts'
 
 GlobalRegistrator.register()
 

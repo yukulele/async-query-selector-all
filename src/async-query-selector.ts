@@ -1,8 +1,8 @@
-import AsyncIterableBuilder from './AsyncIterableBuilder.js'
+import AsyncIterableBuilder from './AsyncIterableBuilder.ts'
 import {
   AsyncQuerySelectorAllType,
   AsyncQuerySelectorType,
-} from './async-query-selector-types.js'
+} from './async-query-selector-types.ts'
 
 const asyncQuerySelector: AsyncQuerySelectorType = (
   selector: string,
