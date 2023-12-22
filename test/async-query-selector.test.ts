@@ -8,7 +8,7 @@ import {
   asyncQuerySelectorAll,
 } from '../src/async-query-selector.ts'
 
-GlobalRegistrator.register()
+if (!globalThis.window) GlobalRegistrator.register()
 
 document.body.innerHTML = /* html */ `<ul><li></li></ul>`
 
