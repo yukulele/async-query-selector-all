@@ -1,15 +1,41 @@
 # async-query-selector
 
-To install dependencies:
+async version of `querySelector()` and `querySelectorAll()`
+
+## Requirement
+
+* [Bun](https://bun.sh/)
+
+## Install
 
 ```bash
 bun install
 ```
 
-To run:
+## Build
 
 ```bash
-bun run src/async-query-selector.ts
+bun run build
 ```
 
-This project was created using `bun init` in bun v1.0.15. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+## Test
+
+```bash
+bun run test
+```
+
+## Use
+
+```javascript
+import {
+  asyncQuerySelector,
+  asyncQuerySelectorAll,
+} from './dist/async-query-selector.js'
+
+const app = await asyncQuerySelector('.app')
+const button = await asyncQuerySelector('button', app)
+
+for await(const img = asyncQuerySelectorAll('img[hidden]', app)){
+  img.hidden = false
+}
+```
