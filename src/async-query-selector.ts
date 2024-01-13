@@ -7,8 +7,9 @@ import {
 const asyncQuerySelector: AsyncQuerySelectorType = (
   selector: string,
   parent: ParentNode = document,
+  timeout = Number.POSITIVE_INFINITY,
 ) =>
-  new Promise<Element>(resolve => {
+  new Promise<Element>((resolve, reject) => {
     const element = parent.querySelector(selector)
     if (element) return resolve(element)
     const observer = new MutationObserver(() => {
@@ -22,6 +23,11 @@ const asyncQuerySelector: AsyncQuerySelectorType = (
       childList: true,
       attributes: true,
     })
+    if (timeout < Number.POSITIVE_INFINITY)
+      setTimeout(() => {
+        observer.disconnect()
+        reject(new Error('no element found after timeout'))
+      }, timeout)
   })
 
 const asyncQuerySelectorAll: AsyncQuerySelectorAllType = (
