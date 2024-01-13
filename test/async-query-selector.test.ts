@@ -51,6 +51,19 @@ describe('asyncQuerySelector', () => {
     const classed3 = list.querySelector(':scope > .classed')
     expect(classed2).toEqual(classed3!)
   })
+  test('timeout', async () => {
+    const tooLate1 = document.createElement('div')
+    tooLate1.classList.add('too-late')
+    setTimeout(() => document.body.append(tooLate1), 20)
+    const tooLate2 = await asyncQuerySelector<HTMLDivElement>(
+      '.too-late',
+      undefined,
+      10,
+    )
+    expect(tooLate2).not.toStrictEqual(tooLate1)
+    expect(tooLate2).toBeUndefined()
+    expectType<HTMLDivElement | undefined>(tooLate2)
+  })
 })
 
 describe('asyncQuerySelectorAll', () => {
