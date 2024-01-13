@@ -2,31 +2,15 @@
 
 async version of `querySelector()` and `querySelectorAll()`
 
-## Requirement
-
-* [Bun](https://bun.sh/)
-
 ## Install
 
 ```bash
-bun install
-```
-
-## Build
-
-```bash
-bun run build
-```
-
-## Test
-
-```bash
-bun run test
+npm i async-queryselector
 ```
 
 ## Use
 
-```javascript
+```typescript
 import {
   asyncQuerySelector,
   asyncQuerySelectorAll,

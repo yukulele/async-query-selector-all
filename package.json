@@ -1,10 +1,24 @@
 {
-  "name": "async-query-selector",
+  "name": "async-query-selector-all",
+  "version": "1.0.0",
+  "homepage": "https://github.com/yukulele/async-query-selector-all",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yukulele/async-query-selector-all.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yukulele/async-query-selector-all/issues"
+  },
+  "main": "./dist/async-query-selector-all.js",
+  "files": [
+    "./dist/"
+  ],
   "scripts": {
     "test": "bun test",
     "lint": "eslint ./src/**/*.ts ./test/**/*.ts --max-warnings 0 --fix",
     "build": "bun run build.ts",
-    "prepublishOnly": "bun run build"
+    "prepublishOnly": "bun run build",
+    "release": "release-it"
   },
   "type": "module",
   "peerDependencies": {
@@ -15,8 +29,8 @@
     "@types/bun": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
-    "bun-plugin-dts": "^0.2.1",
     "async-iterable-builder": "^1.0.3",
+    "bun-plugin-dts": "^0.2.1",
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
@@ -27,6 +41,7 @@
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-unicorn": "^49.0.0",
+    "release-it": "^17.0.1",
     "tsd": "^0.29.0"
   }
 }
