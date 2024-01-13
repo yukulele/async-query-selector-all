@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function -- allowed for tests */
 import { describe, test, expect } from 'bun:test'
 import { expectType } from 'tsd'
 import sleep from './sleep.ts'
@@ -9,9 +10,7 @@ import {
 
 GlobalRegistrator.register()
 
-document.body.innerHTML = /* html */ `
-<ul><li></li></ul>
-<ol><li>1</li><li>2</li></ol>`
+document.body.innerHTML = /* html */ `<ul><li></li></ul>`
 
 describe('asyncQuerySelector', () => {
   const list = document.querySelector('ul')!
@@ -55,19 +54,52 @@ describe('asyncQuerySelector', () => {
 })
 
 describe('asyncQuerySelectorAll', () => {
-  const list = document.querySelector('ol')!
-  const items: Element[] = []
-  ;(async () => {
-    for await (const li of asyncQuerySelectorAll('li', list)) items.push(li)
-  })()
-  test('select elements already in DOM', () => {
+  test('select elements already in DOM', async () => {
+    const list = document.createElement('ol')
+    list.append(document.createElement('li'), document.createElement('li'))
+    document.append(list)
+    const items: Element[] = []
+    ;(async () => {
+      for await (const li of asyncQuerySelectorAll('li', list, 10)) {
+        items.push(li)
+      }
+    })()
+    await sleep()
     expect(items).toHaveLength(2)
   })
 
   test('select elements not yet in DOM', async () => {
+    const list = document.createElement('ol')
+    list.append(document.createElement('li'), document.createElement('li'))
+    document.append(list)
+    const items: Element[] = []
+    ;(async () => {
+      for await (const li of asyncQuerySelectorAll('li', list, 10)) {
+        items.push(li)
+      }
+    })()
     for (let index = 0; index < 3; index++)
       list.append(document.createElement('li'))
     await sleep()
     expect(items).toHaveLength(5)
   })
+
+  test('no select after timeout', async () => {
+    const list = document.createElement('ol')
+    list.append(document.createElement('li'), document.createElement('li'))
+    document.append(list)
+    const items: Element[] = []
+    ;(async () => {
+      for await (const li of asyncQuerySelectorAll('li', list, 10)) {
+        items.push(li)
+      }
+    })()
+    expect(items).toHaveLength(0)
+    await sleep(20)
+    expect(items).toHaveLength(2)
+    list.append(document.createElement('li'))
+    await sleep()
+    expect(items).toHaveLength(2)
+  })
 })
+/* eslint-enable max-lines-per-function -- allowed for tests */

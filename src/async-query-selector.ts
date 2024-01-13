@@ -27,14 +27,15 @@ const asyncQuerySelector: AsyncQuerySelectorType = (
 const asyncQuerySelectorAll: AsyncQuerySelectorAllType = (
   selector: string,
   parent: ParentNode = document,
+  timeout = Number.POSITIVE_INFINITY,
 ) => {
   const delivered = new WeakSet<Element>()
-  const { next, iterable } = new AsyncIterableBuilder<Element>()
+  const builder = new AsyncIterableBuilder<Element>()
   function checkNewElement() {
     for (const element of parent.querySelectorAll(selector)) {
       if (delivered.has(element)) continue
       delivered.add(element)
-      next(element)
+      builder.next(element)
     }
   }
   checkNewElement()
@@ -44,6 +45,11 @@ const asyncQuerySelectorAll: AsyncQuerySelectorAllType = (
     childList: true,
     attributes: true,
   })
-  return iterable
+  if (timeout < Number.POSITIVE_INFINITY)
+    setTimeout(() => {
+      observer.disconnect()
+      builder.done()
+    }, timeout)
+  return builder.iterable
 }
 export { asyncQuerySelectorAll, asyncQuerySelector }
