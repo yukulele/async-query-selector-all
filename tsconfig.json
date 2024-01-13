@@ -16,5 +16,9 @@
     "noEmit": true,
     "allowJs": true
   },
-  "include": ["./src/**/*", "./test/**/*"]
+  "include": [
+    "./build.ts",
+    "./src/**/*",
+    "./test/**/*"
+  ]
 }

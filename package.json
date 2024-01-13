@@ -3,7 +3,8 @@
   "scripts": {
     "test": "bun test",
     "lint": "eslint ./src/**/*.ts ./test/**/*.ts --max-warnings 0 --fix",
-    "build": "bun build ./src/async-query-selector.ts --outdir ./dist/"
+    "build": "bun run build.ts",
+    "prepublishOnly": "bun run build"
   },
   "type": "module",
   "peerDependencies": {
@@ -14,6 +15,7 @@
     "@types/bun": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
+    "bun-plugin-dts": "^0.2.1",
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
