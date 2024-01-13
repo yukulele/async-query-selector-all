@@ -1,30 +1,48 @@
 export default class AsyncIterableBuilder<Type> {
-  readonly #values: Promise<{ value: Type; done: boolean }>[] = []
-  #resolve!: (value: { value: Type; done: boolean }) => void
+  #isDone = false
+  readonly #values: Promise<Type>[] = []
+  #resolve!: (value: Type) => void
+  #reject!: () => void
   readonly iterable: AsyncIterable<Type>
-  readonly next: (value: Type, done?: boolean) => void
+  readonly next: (value: Type) => void
+  readonly done: () => void
 
   constructor() {
     this.#nextPromise()
     this.iterable = this.#createIterable()
     this.next = this.#next.bind(this)
+    this.done = this.#done.bind(this)
   }
 
   async *#createIterable() {
     for (let index = 0; ; index++) {
-      const { value, done } = await this.#values[index]
+      let value: Type
+      try {
+        value = await this.#values[index]
+      } catch {
+        this.#isDone = true
+        return
+      }
       delete this.#values[index]
       yield value
-      if (done) return
     }
   }
 
-  #next(value: Type, done: boolean = false) {
-    this.#resolve({ value, done })
+  #next(value: Type) {
+    if (this.#isDone) throw 'already done'
+    this.#resolve(value)
     this.#nextPromise()
   }
 
+  #done() {
+    if (this.#isDone) throw 'already done'
+    this.#reject()
+  }
+
   #nextPromise() {
-    this.#values.push(new Promise(resolve => (this.#resolve = resolve)))
+    const { promise, resolve, reject } = Promise.withResolvers<Type>()
+    this.#values.push(promise)
+    this.#resolve = resolve
+    this.#reject = reject
   }
 }
