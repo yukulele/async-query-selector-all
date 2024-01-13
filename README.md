@@ -1,4 +1,4 @@
-# async-query-selector
+# async-query-selector-all
 
 async version of `querySelector()` and `querySelectorAll()`
 

@@ -11,6 +11,7 @@
   },
   "main": "./dist/async-query-selector-all.js",
   "files": [
+    "./src/",
     "./dist/"
   ],
   "scripts": {
