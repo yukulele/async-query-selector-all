@@ -1,6 +1,6 @@
 /* eslint-disable max-lines-per-function -- allowed for tests */
 import { describe, test, expect } from 'bun:test'
-import { expectType } from 'tsd'
+import { expectType } from './expectType.ts'
 import sleep from './sleep.ts'
 import { GlobalRegistrator } from '@happy-dom/global-registrator'
 import {
