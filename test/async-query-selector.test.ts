@@ -21,9 +21,9 @@ describe('asyncQuerySelector', () => {
   })
 
   test('select an element already in another element', async () => {
-    const first1 = list.querySelector<HTMLLIElement>(':scope > :first-child')
+    const first1 = list.querySelector<HTMLLIElement>('ul > :first-child')
     const first2 = await asyncQuerySelector<HTMLLIElement>(
-      ':scope > :first-child',
+      'ul > :first-child',
       list,
     )
     expect(first2).toEqual(first1!)
@@ -34,10 +34,10 @@ describe('asyncQuerySelector', () => {
     const li = document.createElement('li')
     li.classList.add('added')
     setTimeout(() => list.append(li))
-    const added1 = list.querySelector(':scope > .added')
+    const added1 = list.querySelector('ul > .added')
     expect(added1).toBeNull()
-    const added2 = await asyncQuerySelector(':scope > .added', list)
-    const added3 = list.querySelector(':scope > .added')
+    const added2 = await asyncQuerySelector('ul > .added', list)
+    const added3 = list.querySelector('ul > .added')
     expect(added2).toEqual(added3!)
   })
 
@@ -45,10 +45,10 @@ describe('asyncQuerySelector', () => {
     const li = document.createElement('li')
     list.append(li)
     setTimeout(() => li.classList.add('classed'))
-    const classed1 = list.querySelector(':scope > .classed')
+    const classed1 = list.querySelector('ul > .classed')
     expect(classed1).toBeNull()
-    const classed2 = await asyncQuerySelector(':scope > .classed', list)
-    const classed3 = list.querySelector(':scope > .classed')
+    const classed2 = await asyncQuerySelector('ul > .classed', list)
+    const classed3 = list.querySelector('ul > .classed')
     expect(classed2).toEqual(classed3!)
   })
 })
@@ -80,7 +80,7 @@ describe('asyncQuerySelectorAll', () => {
     })()
     for (let index = 0; index < 3; index++)
       list.append(document.createElement('li'))
-    await sleep()
+    await sleep(1)
     expect(items).toHaveLength(5)
   })
 

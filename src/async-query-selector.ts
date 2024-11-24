@@ -1,4 +1,4 @@
-import AsyncIterableBuilder from 'async-iterable-builder'
+import { AsyncIterableBuilder } from 'async-iterable-builder'
 import {
   AsyncQuerySelectorAllType,
   AsyncQuerySelectorType,

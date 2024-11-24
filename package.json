@@ -26,23 +26,23 @@
     "typescript": "^5.0.0"
   },
   "devDependencies": {
-    "@happy-dom/global-registrator": "^12.10.3",
-    "@types/bun": "^1.0.0",
-    "@typescript-eslint/eslint-plugin": "^6.14.0",
-    "@typescript-eslint/parser": "^6.14.0",
-    "async-iterable-builder": "^1.1.0",
-    "bun-plugin-dts": "^0.2.1",
-    "eslint": "^8.55.0",
+    "@happy-dom/global-registrator": "^15.11.6",
+    "@types/bun": "latest",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "async-iterable-builder": "^2.0.0",
+    "bun-plugin-dts": "^0.3.0",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-filename-export": "^1.0.4",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-n": "^16.4.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-only-warn": "^1.1.0",
-    "eslint-plugin-prettier": "^5.0.1",
-    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-promise": "^6.6.0",
     "eslint-plugin-unicorn": "^49.0.0",
-    "release-it": "^17.0.1",
-    "tsd": "^0.29.0"
+    "release-it": "^17.10.0",
+    "tsd": "^0.31.2"
   }
 }
