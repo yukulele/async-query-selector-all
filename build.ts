@@ -1,3 +1,4 @@
+import Bun from 'bun'
 import dts from 'bun-plugin-dts'
 
 await Bun.build({

@@ -10,6 +10,7 @@
     "release": true
   },
   "hooks": {
-    "before:init": ["npm run lint", "npm test"]
+    "before:init": ["bun run check"],
+    "before:release": ["bun run lint-fix", "bun run build"]
   }
 }

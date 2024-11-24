@@ -1,16 +1,15 @@
-/* eslint-disable max-lines-per-function -- allowed for tests */
-import { describe, test, expect } from 'bun:test'
-import { expectType } from './expectType.ts'
-import sleep from './sleep.ts'
+import { describe, expect, test } from 'bun:test'
 import { GlobalRegistrator } from '@happy-dom/global-registrator'
 import {
   asyncQuerySelector,
   asyncQuerySelectorAll,
 } from '../src/async-query-selector.ts'
+import { expectType } from './expectType.ts'
+import { sleep } from './sleep.ts'
 
 GlobalRegistrator.register()
 
-document.body.innerHTML = /* html */ `<ul><li></li></ul>`
+document.body.innerHTML = /* html */ '<ul><li></li></ul>'
 
 describe('asyncQuerySelector', () => {
   const list = document.querySelector('ul')!
@@ -102,4 +101,3 @@ describe('asyncQuerySelectorAll', () => {
     expect(items).toHaveLength(2)
   })
 })
-/* eslint-enable max-lines-per-function -- allowed for tests */
