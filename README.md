@@ -5,7 +5,7 @@ async version of `querySelector()` and `querySelectorAll()`
 ## Install
 
 ```bash
-npm i async-queryselector
+npm i async-query-selector-all
 ```
 
 ## Use
@@ -14,7 +14,7 @@ npm i async-queryselector
 import {
   asyncQuerySelector,
   asyncQuerySelectorAll,
-} from './dist/async-query-selector.js'
+} from 'async-query-selector-all'
 
 const app = await asyncQuerySelector('.app')
 const button = await asyncQuerySelector('button', app)
