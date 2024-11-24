@@ -19,7 +19,7 @@ import {
 const app = await asyncQuerySelector('.app')
 const button = await asyncQuerySelector('button', app)
 
-for await(const img = asyncQuerySelectorAll('img[hidden]', app)){
+for await (const img of asyncQuerySelectorAll('img[hidden]', app)) {
   img.hidden = false
 }
 ```
